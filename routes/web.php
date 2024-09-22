@@ -12,6 +12,7 @@ Route::get('/', function () {
 Route::controller(AdminController::class)->group(function(){
     Route::prefix('admin')->group(function(){
         Route::get('/logout','destroy')->name('admin.logout');
+        Route::get('/profile','Profile')->name('admin.profile');
     });
 });
 
