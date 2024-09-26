@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Home\AboutController;
+use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
 
 // todo: Admin All Route
@@ -13,8 +15,38 @@ Route::controller(AdminController::class)->group(function(){
     Route::prefix('admin')->group(function(){
         Route::get('/logout','destroy')->name('admin.logout');
         Route::get('/profile','Profile')->name('admin.profile');
+        Route::get('/edit/profile','EditProfile')->name('edit.profile');
+        Route::post('/store/profile','StoreProfile')->name('store.profile');
+
+        Route::get('/change/password','ChangePassword')->name('change.password');
+        Route::post('/update/password','UpdatePassword')->name('update.password');
     });
 });
+
+// todo: Home Slide All Route
+Route::controller(HomeSliderController::class)->group(function(){
+    Route::prefix('admin')->group(function(){
+        Route::get('/home/slide','HomeSlider')->name
+        ('home.slide');
+
+        Route::post('/update/slide','UpdateSlider')->name('update.slider');
+
+    });
+});
+
+// todo: About Page All Route
+Route::controller(AboutController::class)->group(function(){
+    Route::prefix('admin')->group(function(){
+
+        Route::get('/about/page','AboutPage')->name('about.page');
+
+        Route::post('/update/about','UpdateAbout')->name('update.about');
+
+    });
+});
+
+    //todo; frontend routes
+Route::get('/about',[AboutController::class,'HomeAbout'])->name('home.about');
 
 Route::get('/dashboard', function () {
     return view('admin.index');
