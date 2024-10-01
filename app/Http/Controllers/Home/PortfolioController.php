@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use Carbon\Carbon;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -58,7 +59,7 @@ class PortfolioController extends Controller
                 'portfolio_name' => $request->portfolio_name,
                 'portfolio_title' => $request->portfolio_title,
                 'portfolio_description' => $request->portfolio_description,
-                'portfolio_image' => $save_url,
+                'portfolio_image' => $save_url
             ]);
 
             $notification = array(
