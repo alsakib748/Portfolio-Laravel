@@ -2,6 +2,10 @@
 
 @section('main')
 
+@section('title')
+    Contact
+@endsection
+
             <!-- breadcrumb-area -->
             <section class="breadcrumb__wrap">
                 <div class="container custom-container">

@@ -198,7 +198,7 @@ class BlogController extends Controller
 
         $categories = BlogCategory::orderBy('blog_category','ASC')->get();
 
-        $allBlogs = Blog::latest()->get();
+        $allBlogs = Blog::latest()->paginate(2);
 
         return view('frontend.blog',compact(['allBlogs','categories']));
 
